@@ -56,7 +56,9 @@ def make_environ(event):
     environ['REQUEST_METHOD'] = event['httpMethod']
     environ['PATH_INFO'] = event['path']
     environ['QUERY_STRING'] = urlencode(qs) if qs else ''
-    environ['REMOTE_ADDR'] = event['requestContext']['identity']['sourceIp']
+
+    environ['REMOTE_ADDR'] = event['headers']['X-Forwarded-For']
+
     environ['HOST'] = '{}:{}'.format(
         environ.get('HTTP_HOST', ''),
         environ.get('HTTP_X_FORWARDED_PORT', ''),
