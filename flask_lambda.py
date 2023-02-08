@@ -20,7 +20,7 @@ from io import StringIO
 from urllib.parse import urlencode
 
 from flask import Flask
-from werkzeug.wrappers import BaseRequest
+from werkzeug.wrappers import Request
 
 
 __version__ = '0.0.4'
